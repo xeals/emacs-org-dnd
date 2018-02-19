@@ -107,6 +107,24 @@
    for legendary actions is added automatically. Any number of entries in each
    category (skill, action, legendary action) can be added.
 
+** Tables
+
+   Tables are formatted the same as regular org-mode tables.
+
+   =NAME= is used only internally (i.e., for referencing). To set a visible
+   title for a table, use =HEADER=.
+
+   Tables with no =CAPTION= are formatted inline with text and allow wrapping.
+   Texts with a caption span both columns.
+
+   Tables accept the following attributes through =ATTR_DND=:
+
+   - =:align= :: As with the standard org-mode align attribute, accepts a LaTeX
+                 alignment string. Common are =lX= or =cX= to left- or centre-align the left
+                 column and expand the right column to fill the page column.
+   - =:color= :: Accepts a color as defined by the LaTeX package. See the
+                 example document for a list of valid colors.
+
 * License
 
   Licensed under Apache License, Version 2.0
