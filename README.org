@@ -129,6 +129,12 @@
    - =:color= :: Accepts a color as defined by the LaTeX package. See the
                  example document for a list of valid colors.
 
+* TODO
+
+  - Support package options
+  - Move table caption below table
+  - Don't require the options blurb?
+
 * License
 
   Licensed under Apache License, Version 2.0

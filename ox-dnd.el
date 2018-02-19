@@ -1,3 +1,10 @@
+;;; ox-dnd.el --- Write D&D homebrew sheets using org-mode
+
+;; Copyright (C) 2018 Alex Smith <azphreal19@protonmail.com>
+
+;; Author: Alex Smith <azphreal19@protonmail.com
+;; URL: https://github.com/Azphreal/emacs-org-dnd
+
 (require 'ox-latex)
 
 (unless (assoc "dnd" org-latex-classes)
@@ -348,3 +355,5 @@ Sourced from ox-beamer."
       (lambda (file) (org-latex-compile file)))))
 
 (provide 'ox-dnd)
+
+;;; ox-dnd.el ends here
