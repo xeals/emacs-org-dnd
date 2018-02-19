@@ -9,11 +9,6 @@
   As much effort as possible has been taken to make creation feel like natural
   org-mode markup.
 
-  Options are included in brief here. For full usage examples, see
-  [[file:example.org][the example document]].
-
-  ---
-
   Follow the instructions to set up the package at the
   [[https://github.com/evanbergeron/DND-5e-LaTeX-Template][LaTeX template
   repo]].
@@ -37,6 +32,10 @@
 
   Each environment in the LaTeX package corresponds to an org-mode block. Each
   block is customised using (several) attributes.
+
+  Options are included in here. For full usage examples, see
+  [[file:example/example.org][the example document]]. A sample PDF and tex
+  output is included in the [[./example][example]] folder.
 
 ** Comment/paper/quote box
 

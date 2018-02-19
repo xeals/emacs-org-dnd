@@ -1,0 +1,242 @@
+% Created 2018-02-19 Mon 22:29
+% Intended LaTeX compiler: pdflatex
+\documentclass[letterpaper,10pt,twoside,twocolumn,openany]{book}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{dnd}
+\hypersetup{pdfborder=0 0 0}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{lipsum}
+\author{Alex}
+\date{\today}
+\title{Example}
+\hypersetup{
+ pdfauthor={Alex},
+ pdftitle={Example},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 25.3.1 (Org mode 9.1.6)}, 
+ pdflang={English}}
+\begin{document}
+
+
+\chapter{Chapter 1: The Dark \LaTeX}
+\label{sec:org3ea15eb}
+
+\section{Main Section}
+\label{sec:org26086a0}
+\lipsum[2]
+
+\begin{quotebox}
+As you approach this template you get a sense that the blood and tears of many generations went into its making. A warm feeling welcomes you as you type your first words.
+\end{quotebox}
+
+\subsection{Fun with boxes}
+\label{sec:org061907b}
+\subsubsection{Even more fun!}
+\label{sec:orgef44c3c}
+
+\begin{commentbox}{This Is a Comment Box!}\label{org9f12bde}
+A \texttt{commentbox} is a box for minimal highlighting of text. It lacks the ornamentation of \texttt{paperbox}, but it can handle being broken over a column.
+\end{commentbox}
+
+\subtitlesection{Weapon, +1, +2, or +3}{Weapon (any), uncommon (+1), rare (+2), or very rare (+3)}
+
+\lipsum[3]
+
+\begin{figure}[!t]
+\begin{paperbox}{Behold, the Paperbox!}\label{org3e01e79}
+The \texttt{paperbox} is used as a sidebar. It does not break over columns and is best used with a figure environment to float it to one corner of the page where the surrounding text can then flow around it.
+\end{paperbox}
+\end{figure}
+
+\header{Nice Table}
+\begin{dndtable}
+\textbf{Table head} & \textbf{Table head}\\
+Some value & Some value\\
+Some value & Some value\\
+Some value & Some value\\
+\end{dndtable}
+
+\begin{monsterbox}{Monster Foo}
+\begin{hangingpar}
+\textit{Small metasyntactic variable (goblinoid), neutral evil}
+\end{hangingpar}
+\hline%
+\basics[%
+armorclass = 12,
+hitpoints = \dice{3d8+3},
+speed = 50 ft,
+]
+\hline%
+\stats[%
+CON = \stat{10},
+STR = \stat{12},
+DEX = \stat{7},
+INT = \stat{10},
+WIS = \stat{10},
+CHA = \stat{10},
+]
+\hline%
+\details[%
+languages = {Common Lisp, Erlang},
+challenge = 0,
+]
+\hline [1mm]
+\begin{monsteraction}[Monster-super-powers]
+This Monster has some serious superpowers!
+\end{monsteraction}
+\monstersection{Actions}
+\begin{monsteraction}[Generate text]
+This one can generate tremendous amounts of text!
+Though only when it wants to.
+\end{monsteraction}
+\begin{monsteraction}[More actions]
+See, here he goes again! Yet more text.
+\end{monsteraction}
+\end{monsterbox}
+
+\section{Spells}
+\label{sec:org7f5158a}
+
+\begin{spell}{Beautiful Typesetting}{4th-level illusion}{1 action}{5 feet}{S, M (ink and parchment, which the spell consumes)}{Until dispelled}
+You are able to transform a written message of any length into a beautiful
+scroll. All creatures within range that can see the scroll must make a wisdom
+saving throw or be charmed by you until the spell ends.
+
+While the creature is charmed by you, they cannot take their eyes off the
+scroll and cannot willingly move away from the scroll. Also, the targets can
+make a wisdom saving throw at the end of each of their turns. On a success,
+they are no longer charmed.
+\end{spell}
+
+\lipsum[2]
+
+\section{Colors}
+\label{sec:org436b61c}
+
+This package provides several global color variables to style \texttt{commentbox}, \texttt{quotebox}, \texttt{paperbox}, and \texttt{dndtable} environments.
+
+\begin{dndtable}[lX]
+\textbf{Color} & \textbf{Description}\\
+\texttt{commentboxcolor} & Controls \texttt{commentbox} background.\\
+\texttt{paperboxcolor} & Controls \texttt{paperbox} background.\\
+\texttt{quoteboxcolor} & Controls \texttt{quotebox} background.\\
+\texttt{tablecolor} & Controls background of even \texttt{dndtable} rows.\\
+\end{dndtable}
+
+See Table \ref{tab:org8e0d0a5} for a list of accent colors that match the core books.
+
+\begin{table*}[htbp]
+\caption{\label{tab:org8e0d0a5}
+Colors supported by this package}
+
+\begin{dndtable}[XX]
+\textbf{Color} & \textbf{Description}\\
+\texttt{PhbLightGreen} & Light green used in PHB Part 1\\
+\texttt{PhbLightCyan} & Light cyan used in PHB Part 2\\
+\texttt{PhbMauve} & Pale purple used in PHB Part 3\\
+\texttt{PhbTan} & Light brown used in PHB appendix\\
+\texttt{DmgLavender} & Pale purple used in DMG Part 1\\
+\texttt{DmgCoral} & Orange-pink used in DMG Part 2\\
+\texttt{DmgSlateGray} (\texttt{DmgSlateGrey}) & Blue-gray used in PHB Part 3\\
+\texttt{DmgLilac} & Purple-gray used in DMG appendix\\
+\end{dndtable}
+\end{table*}
+
+\begin{itemize}
+\item Use \texttt{\textbackslash{}setthemecolor[<color>]} to set \texttt{themecolor}, \texttt{commentcolor}, \texttt{paperboxcolor}, and \texttt{tablecolor} to a specific color.
+\item Calling \texttt{\textbackslash{}setthemecolor} without an argument sets those colors to the current \texttt{themecolor}.
+\item \texttt{commentbox}, \texttt{dndtable}, \texttt{paperbox}, and \texttt{quoteboxcolor} also accept an optional color argument to set the color for a single instance.
+\end{itemize}
+
+\subsection{Examples}
+\label{sec:org081ff9e}
+
+\subsubsection{Using \texttt{themecolor}}
+\label{sec:orgb9648f0}
+
+\begin{verbatim}
+\setthemecolor[PhbMauve]
+
+#+NAME: Example
+#+BEGIN_PAPERBOX
+\lipsum[2]
+#+END_PAPERBOX
+
+\setthemecolor[PhbLightCyan]
+
+#+HEADER: Example
+#+ATTR_DND: :align cX
+| *d8* | *Item*                  |
+|  1   | Small wooden button     |
+|  2   | Red feather             |
+|  3   | Human tooth             |
+|  4   | Vial of green liquid    |
+|  6   | Tasty biscuit           |
+|  7   | Broken axe handle       |
+|  8   | Tarnished silver locket |
+\end{verbatim}
+
+\setthemecolor[PhbMauve]
+
+\begin{figure}[!t]
+\begin{paperbox}{Example}\label{org8b2b9ab}
+\lipsum[2]
+\end{paperbox}
+\end{figure}
+
+\setthemecolor[PhbLightCyan]
+
+\header{Example}
+\begin{dndtable}[cX]
+\textbf{d8} & \textbf{Item}\\
+1 & Small wooden button\\
+2 & Red feather\\
+3 & Human tooth\\
+4 & Vial of green liquid\\
+6 & Tasty biscuit\\
+7 & Broken axe handle\\
+8 & Tarnished silver locket\\
+\end{dndtable}
+
+\subsubsection{Using element color arguments}
+\label{sec:orgf0399a8}
+
+\begin{verbatim}
+#+ATTR_DND: :align cX :color DmgCoral
+| *d8* | *Item*                  |
+|  1   | Small wooden button     |
+|  2   | Red feather             |
+|  3   | Human tooth             |
+|  4   | Vial of green liquid    |
+|  6   | Tasty biscuit           |
+|  7   | Broken axe handle       |
+|  8   | Tarnished silver locket |
+\end{verbatim}
+
+\begin{dndtable}[cX][DmgCoral]
+\textbf{d8} & \textbf{Item}\\
+1 & Small wooden button\\
+2 & Red feather\\
+3 & Human tooth\\
+4 & Vial of green liquid\\
+6 & Tasty biscuit\\
+7 & Broken axe handle\\
+8 & Tarnished silver locket\\
+\end{dndtable}
+\end{document}
