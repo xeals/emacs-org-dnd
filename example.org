@@ -1,0 +1,170 @@
+#+TITLE: Example
+#+LATEX_CLASS: dnd
+#+LATEX_HEADER: \usepackage{lipsum}
+#+OPTIONS: toc:nil title:nil H:5
+
+* Chapter 1: The Dark \LaTeX
+
+** Main Section
+   \lipsum[2]
+
+   #+BEGIN_QUOTEBOX
+   As you approach this template you get a sense that the blood and tears of many generations went into its making. A warm feeling welcomes you as you type your first words.
+   #+END_QUOTEBOX
+
+*** Fun with boxes
+**** Even more fun!
+
+     #+NAME: This Is a Comment Box!
+     #+BEGIN_COMMENTBOX
+     A =commentbox= is a box for minimal highlighting of text. It lacks the ornamentation of =paperbox=, but it can handle being broken over a column.
+     #+END_COMMENTBOX
+
+     #+BEGIN_SUBTITLE
+     Weapon, +1, +2, or +3
+     Weapon (any), uncommon (+1), rare (+2), or very rare (+3)
+     #+END_SUBTITLE
+     # Need a subtitle
+
+      \lipsum[3]
+
+      #+NAME: Behold, the Paperbox!
+      #+BEGIN_PAPERBOX
+      The =paperbox= is used as a sidebar. It does not break over columns and is best used with a figure environment to float it to one corner of the page where the surrounding text can then flow around it.
+      #+END_PAPERBOX
+
+      #+HEADER: Nice Table
+      | *Table head* | *Table head* |
+      | Some value | Some value |
+      | Some value | Some value |
+      | Some value | Some value |
+
+      #+NAME: Monster Foo
+      #+ATTR_MONSTER_INFO: :size small :race metasyntactic variable :subrace goblinoid :alignment neutral evil
+      #+ATTR_MONSTER_BASICS: :ac 12 :hp 3d8+3 :speed 50
+      #+ATTR_MONSTER_STATS: :str 12 :dex 7
+      #+ATTR_MONSTER_DETAILS: :langs Common Lisp, Erlang
+      #+BEGIN_MONSTER
+      - Monster-super-powers :: This Monster has some serious superpowers!
+      - Actions
+        - Generate text :: This one can generate tremendous amounts of text!
+                           Though only when it wants to.
+        - More actions :: See, here he goes again! Yet more text.
+      #+END_MONSTER
+
+** Spells
+
+   #+NAME: Beautiful Typesetting
+   #+ATTR_SPELL: :level 4 :school illusion :range 5 feet :cast 1 action :duration Until dispelled :comp S, M (ink and parchment, which the spell consumes)
+   #+BEGIN_SPELL
+   You are able to transform a written message of any length into a beautiful
+   scroll. All creatures within range that can see the scroll must make a wisdom
+   saving throw or be charmed by you until the spell ends.
+
+   While the creature is charmed by you, they cannot take their eyes off the
+   scroll and cannot willingly move away from the scroll. Also, the targets can
+   make a wisdom saving throw at the end of each of their turns. On a success,
+   they are no longer charmed.
+   #+END_SPELL
+
+   \lipsum[2]
+
+** Colors
+
+   This package provides several global color variables to style =commentbox=, =quotebox=, =paperbox=, and =dndtable= environments.
+
+   #+ATTR_DND: :align lX
+   | *Color*           | *Description*                                |
+   | =commentboxcolor= | Controls =commentbox= background.            |
+   | =paperboxcolor=   | Controls =paperbox= background.              |
+   | =quoteboxcolor=   | Controls =quotebox= background.              |
+   | =tablecolor=      | Controls background of even =dndtable= rows. |
+
+   See Table [[tab:colors]] for a list of accent colors that match the core books.
+
+   #+NAME: tab:colors
+   #+CAPTION: Colors supported by this package
+   #+ATTR_DND: :align XX
+   | *Color*                       | *Description*                      |
+   | =PhbLightGreen=               | Light green used in PHB Part 1   |
+   | =PhbLightCyan=                | Light cyan used in PHB Part 2    |
+   | =PhbMauve=                    | Pale purple used in PHB Part 3   |
+   | =PhbTan=                      | Light brown used in PHB appendix |
+   | =DmgLavender=                 | Pale purple used in DMG Part 1   |
+   | =DmgCoral=                    | Orange-pink used in DMG Part 2   |
+   | =DmgSlateGray= (=DmgSlateGrey=) | Blue-gray used in PHB Part 3     |
+   | =DmgLilac=                    | Purple-gray used in DMG appendix |
+
+   - Use =\setthemecolor[<color>]= to set =themecolor=, =commentcolor=, =paperboxcolor=, and =tablecolor= to a specific color.
+   - Calling =\setthemecolor= without an argument sets those colors to the current =themecolor=.
+   - =commentbox=, =dndtable=, =paperbox=, and =quoteboxcolor= also accept an optional color argument to set the color for a single instance.
+
+*** Examples
+
+**** Using =themecolor=
+
+     #+BEGIN_SRC org
+       \setthemecolor[PhbMauve]
+
+       ,#+NAME: Example
+       ,#+BEGIN_PAPERBOX
+       \lipsum[2]
+       ,#+END_PAPERBOX
+
+       \setthemecolor[PhbLightCyan]
+
+       ,#+HEADER: Example
+       ,#+ATTR_DND: :align cX
+       | *d8* | *Item*                  |
+       |  1   | Small wooden button     |
+       |  2   | Red feather             |
+       |  3   | Human tooth             |
+       |  4   | Vial of green liquid    |
+       |  6   | Tasty biscuit           |
+       |  7   | Broken axe handle       |
+       |  8   | Tarnished silver locket |
+     #+END_SRC
+
+     \setthemecolor[PhbMauve]
+
+     #+NAME: Example
+     #+BEGIN_PAPERBOX
+     \lipsum[2]
+     #+END_PAPERBOX
+
+     \setthemecolor[PhbLightCyan]
+
+     #+HEADER: Example
+     #+ATTR_DND: :align cX
+     | *d8* | *Item*                    |
+     |  1 | Small wooden button     |
+     |  2 | Red feather             |
+     |  3 | Human tooth             |
+     |  4 | Vial of green liquid    |
+     |  6 | Tasty biscuit           |
+     |  7 | Broken axe handle       |
+     |  8 | Tarnished silver locket |
+
+**** Using element color arguments
+
+     #+BEGIN_SRC org
+     ,#+ATTR_DND: :align cX :color DmgCoral
+     | *d8* | *Item*                  |
+     |  1   | Small wooden button     |
+     |  2   | Red feather             |
+     |  3   | Human tooth             |
+     |  4   | Vial of green liquid    |
+     |  6   | Tasty biscuit           |
+     |  7   | Broken axe handle       |
+     |  8   | Tarnished silver locket |
+     #+END_SRC
+
+     #+ATTR_DND: :align cX :color DmgCoral
+     | *d8* | *Item*                    |
+     |  1 | Small wooden button     |
+     |  2 | Red feather             |
+     |  3 | Human tooth             |
+     |  4 | Vial of green liquid    |
+     |  6 | Tasty biscuit           |
+     |  7 | Broken axe handle       |
+     |  8 | Tarnished silver locket |

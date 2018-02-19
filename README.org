@@ -1,0 +1,120 @@
+* =emacs-org-dnd=
+
+  Provides an org-mode compatability layer to the
+  [[https://github.com/evanbergeron/DND-5e-LaTeX-Template][D&D 5e LaTeX
+  Template]].
+
+* Installation
+
+  As much effort as possible has been taken to make creation feel like natural
+  org-mode markup.
+
+  Options are included in brief here. For full usage examples, see
+  [[file:example.org][the example document]].
+
+  ---
+
+  Follow the instructions to set up the package at the
+  [[https://github.com/evanbergeron/DND-5e-LaTeX-Template][LaTeX template
+  repo]].
+
+  Clone this repo somewhere and add it to your emacs load path.
+
+  Add the following to your =.emacs=:
+
+  #+BEGIN_SRC emacs-lisp
+(require 'ox-dnd)
+  #+END_SRC
+
+* Usage
+
+  Add the following to your =.org= file:
+
+  #+BEGIN_SRC org
+,#+LATEX_CLASS: dnd
+,#+OPTIONS: toc:nil title:nil H:5
+  #+END_SRC
+
+  Each environment in the LaTeX package corresponds to an org-mode block. Each
+  block is customised using (several) attributes.
+
+** Comment/paper/quote box
+
+   - =NAME= :: Title of box
+
+** Subtitle
+
+   No attributes.
+
+   Heading on first line of block, subtitle on second line of block.
+
+** Spell
+
+   - =NAME= :: Name of spell
+   - =ATTR_SPELL= :: Spell information:
+                     - =:level= :: Spell level
+                     - =:school= :: Spell school (illusion, abjuration, etc.)
+                     - =:range= :: Spell range (include unit; e.g., =5 feet=)
+                     - =:cast= :: Cast time (include unit; e.g., =1 action=)
+                     - =:duration= :: Spell duration (include unit; e.g., =Until dispelled=,
+                                      =1 round/level=)
+                     - =:comp= :: Spell components (in full, including information for
+                                  material components)
+
+   Block contents are the spell description.
+
+** Monster
+
+   - =NAME= :: Name of monster
+   - =ATTR_MONSTER_INFO= :: Content in the subheader of a monster:
+        - =:size=
+        - =:race=
+        - =:subrace=; optional
+        - =:alignment=
+   - =ATTR_MONSTER_BASICS= :: Basic stat block; all optional:
+        - =:ac= (armor class)
+        - =:hp= (hit dice; given as dice notation, e.g., 3d8+3)
+        - =:speed=
+   - =ATTR_MONSTER_STATS= :: Monster stats; modifiers are calculated
+        automatically; all optional:
+        - =:con=
+        - =:str=
+        - =:dex=
+        - =:int=
+        - =:wis=
+        - =:cha=
+   - =ATTR_MONSTER_DETAILS= :: Detailed information; all optional:
+        - =:skills=
+        - =:saves=
+        - =:imm= (damage immunities)
+        - =:res= (damage resistances)
+        - =:vul= (damage vulnerabilities)
+        - =:senses= (e.g., darkvision, tremorsense)
+        - =:langs= (languages)
+        - =:cr= (challenge rating; experience value calculated automatically)
+
+
+   Block contents are the monster skills in the following format:
+
+   #+BEGIN_SRC org
+     - Skill name :: Effect
+     - Actions
+       - Action name :: Effect
+     - Legendary Actions
+       - Legendary action name :: Effect
+   #+END_SRC
+
+   Any entry that appears before the actions header is a passive skill. The blurb
+   for legendary actions is added automatically. Any number of entries in each
+   category (skill, action, legendary action) can be added.
+
+* License
+
+  Licensed under Apache License, Version 2.0
+  ([[file:LICENSE][LICENSE]] or http://www.apache.org/licenses/LICENSE-2.0).
+
+** Contribution
+
+   Unless you explicitly state otherwise, any contribution intentionally
+   submitted for inclusion in the work by you, as defined in the Apache-2.0
+   license, shall be licensed as above, without any additional terms or conditions.
