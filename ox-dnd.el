@@ -1,9 +1,9 @@
 ;;; ox-dnd.el --- Write D&D homebrew sheets using org-mode
 
-;; Copyright (C) 2018 Alex Smith <azphreal19@protonmail.com>
+;; Copyright (C) 2018 Alex Smith <alex.smith@owari.cc>
 
-;; Author: Alex Smith <azphreal19@protonmail.com
-;; URL: https://github.com/Azphreal/emacs-org-dnd
+;; Author: Alex Smith <alex.smith@owari.cc>
+;; URL: https://github.com/xeals/emacs-org-dnd
 
 (require 'ox-latex)
 
@@ -129,7 +129,7 @@ contextual information."
        (concat "\\basics[%\n"
                (format "armorclass = %s,\n" (or ac 0))
                (format "hitpoints = \\dice{%s},\n" (or hp 0))
-               (format "speed = %s ft,\n" (or speed 0))
+               (format "speed = {%s ft.},\n" (or speed 0))
                "]\n"))
      "\\hline%\n"
      ;; Stats
@@ -194,7 +194,7 @@ contextual information."
                (format "\\end{%s}\n\\end{figure}" type)))
       ("quotebox"
        (concat (format "\\begin{%s}\n" type)
-               contents
+               (concat "\\emph{" contents "}")
                (format "\\end{%s}" type)))
       ("spell" (org-dnd-spell special-block contents info))
       ("subtitle" (org-dnd--subtitle-block special-block contents info))
