@@ -16,11 +16,11 @@
 \\usepackage[T1]{fontenc}
 \\usepackage{hyperref}
 \\usepackage{dnd}"
-("\\chapter{%s}" . "\\chapter*{%s}")
-("\\section{%s}" . "\\section*{%s}")
-("\\subsection{%s}" . "\\subsection*{%s}")
-("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-)))
+                 ("\\chapter{%s}" . "\\chapter*{%s}")
+                 ("\\section{%s}" . "\\section*{%s}")
+                 ("\\subsection{%s}" . "\\subsection*{%s}")
+                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                 )))
 
 (defun ordinal (n)
   (let ((str (if (numberp n) (number-to-string n) n)))
@@ -83,13 +83,13 @@ contextual information."
       (replace-regexp-in-string
        "\\\\item\\[{\\([^}]*\\)}] \\(.+?\\)|\\\\"
        "\\\\begin{monsteraction}[\\1]|\\2|\\\\end{monsteraction}|\\\\"
-      (replace-regexp-in-string
-       "\\\\item\\[{\\([^}]*\\)}] \\(.+?\\)|\\\\"
-       "\\\\begin{monsteraction}[\\1]|\\2|\\\\end{monsteraction}|\\\\"
        (replace-regexp-in-string
-        "\\\\item \\([^|]*\\)"
-        "\\\\monstersection{\\1}"
-        (replace-regexp-in-string "\n" "|" content)))))))))
+        "\\\\item\\[{\\([^}]*\\)}] \\(.+?\\)|\\\\"
+        "\\\\begin{monsteraction}[\\1]|\\2|\\\\end{monsteraction}|\\\\"
+        (replace-regexp-in-string
+         "\\\\item \\([^|]*\\)"
+         "\\\\monstersection{\\1}"
+         (replace-regexp-in-string "\n" "|" content)))))))))
 
 (defun org-dnd--add-legendary-action-text (name content)
   (let ((nm (downcase name)))
