@@ -225,10 +225,13 @@ contextual information."
         (replace-regexp-in-string
          "\\\\\\(begin\\|end\\){center}\n?"
          ""
+         (replace-regexp-in-string
+          "\\\\centering"
+          ""
           (replace-regexp-in-string
-           "\\\\centering"
+           "\\\\hline"
            ""
-           (org-latex-table table contents info)))))))));)
+           (org-latex-table table contents info))))))))))
 
 (org-export-define-derived-backend 'dnd 'latex
   :menu-entry
