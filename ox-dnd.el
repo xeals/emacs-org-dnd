@@ -66,8 +66,8 @@ CONTENTS holds the contents of the block.  INFO is a plist holding
 contextual information."
   (let ((content (split-string contents "\n" t nil)))
     (format "\\subtitlesection{%s}{%s}"
-            (first content)
-            (second content))))
+            (car content)
+            (car (cdr content)))))
 
 (defun org-dnd--extract-actions (content)
   (org-trim
@@ -205,7 +205,7 @@ contextual information."
   "Transcode a table from Org to a D&D LaTeX table.
 CONTENTS holds the contents of the table.  INFO is a plist holding
 contextual information."
-  (let ((header (first (org-element-property :header table)))
+  (let ((header (car (org-element-property :header table)))
         (align (org-export-read-attribute :attr_dnd table :align))
         (color (org-export-read-attribute :attr_dnd table :color)))
     (format
