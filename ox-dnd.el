@@ -207,7 +207,8 @@ CONTENTS holds the contents of the table.  INFO is a plist holding
 contextual information."
   (let ((header (car (org-element-property :header table)))
         (align (org-export-read-attribute :attr_dnd table :align))
-        (color (org-export-read-attribute :attr_dnd table :color)))
+        (color (org-export-read-attribute :attr_dnd table :color))
+        (separate (org-export-read-attribute :attr_dnd table :separate)))
     (format
      "%s%s"
      (if header (format "\\header{%s}\n" header) "")
@@ -230,7 +231,10 @@ contextual information."
           ""
           (replace-regexp-in-string
            "\\\\hline"
-           ""
+           (if (not separate) ""
+             (format "\\\\end{dndtable}\n\\\\begin{dndtable}%s%s"
+                     (if align (format "[%s]" align) "")
+                     (if color (format "[%s]" color) "")))
            (org-latex-table table contents info))))))))))
 
 (org-export-define-derived-backend 'dnd 'latex
