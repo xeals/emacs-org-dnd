@@ -16,11 +16,11 @@
 \\usepackage[T1]{fontenc}
 \\usepackage{hyperref}
 \\usepackage{dnd}"
-("\\chapter{%s}" . "\\chapter*{%s}")
-("\\section{%s}" . "\\section*{%s}")
-("\\subsection{%s}" . "\\subsection*{%s}")
-("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-)))
+                 ("\\chapter{%s}" . "\\chapter*{%s}")
+                 ("\\section{%s}" . "\\section*{%s}")
+                 ("\\subsection{%s}" . "\\subsection*{%s}")
+                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                 )))
 
 (defun ordinal (n)
   (let ((str (if (numberp n) (number-to-string n) n)))
@@ -83,13 +83,13 @@ contextual information."
       (replace-regexp-in-string
        "\\\\item\\[{\\([^}]*\\)}] \\(.+?\\)|\\\\"
        "\\\\begin{monsteraction}[\\1]|\\2|\\\\end{monsteraction}|\\\\"
-      (replace-regexp-in-string
-       "\\\\item\\[{\\([^}]*\\)}] \\(.+?\\)|\\\\"
-       "\\\\begin{monsteraction}[\\1]|\\2|\\\\end{monsteraction}|\\\\"
        (replace-regexp-in-string
-        "\\\\item \\([^|]*\\)"
-        "\\\\monstersection{\\1}"
-        (replace-regexp-in-string "\n" "|" content)))))))))
+        "\\\\item\\[{\\([^}]*\\)}] \\(.+?\\)|\\\\"
+        "\\\\begin{monsteraction}[\\1]|\\2|\\\\end{monsteraction}|\\\\"
+        (replace-regexp-in-string
+         "\\\\item \\([^|]*\\)"
+         "\\\\monstersection{\\1}"
+         (replace-regexp-in-string "\n" "|" content)))))))))
 
 (defun org-dnd--add-legendary-action-text (name content)
   (let ((nm (downcase name)))
@@ -207,7 +207,8 @@ CONTENTS holds the contents of the table.  INFO is a plist holding
 contextual information."
   (let ((header (car (org-element-property :header table)))
         (align (org-export-read-attribute :attr_dnd table :align))
-        (color (org-export-read-attribute :attr_dnd table :color)))
+        (color (org-export-read-attribute :attr_dnd table :color))
+        (separate (org-export-read-attribute :attr_dnd table :separate)))
     (format
      "%s%s"
      (if header (format "\\header{%s}\n" header) "")
@@ -225,10 +226,16 @@ contextual information."
         (replace-regexp-in-string
          "\\\\\\(begin\\|end\\){center}\n?"
          ""
+         (replace-regexp-in-string
+          "\\\\centering"
+          ""
           (replace-regexp-in-string
-           "\\\\centering"
-           ""
-           (org-latex-table table contents info)))))))));)
+           "\\\\hline"
+           (if (not separate) ""
+             (format "\\\\end{dndtable}\n\\\\begin{dndtable}%s%s"
+                     (if align (format "[%s]" align) "")
+                     (if color (format "[%s]" color) "")))
+           (org-latex-table table contents info))))))))))
 
 (org-export-define-derived-backend 'dnd 'latex
   :menu-entry
