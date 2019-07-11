@@ -252,9 +252,9 @@ contextual information."
                      (special-block . org-dnd-special-block)))
 
 ;;;###autoload
-(defun org-beamer-export-as-latex
+(defun org-dnd-export-as-latex
     (&optional async subtreep visible-only body-only ext-plist)
-  "Export current buffer as a Beamer buffer.
+  "Export current buffer as a D&D buffer.
 
 If narrowing is active in the current buffer, only export its
 narrowed part.
@@ -279,19 +279,19 @@ EXT-PLIST, when provided, is a property list with external
 parameters overriding Org default settings, but still inferior to
 file-local settings.
 
-Export is done in a buffer named \"*Org BEAMER Export*\", which
+Export is done in a buffer named \"*Org D&D Export*\", which
 will be displayed when `org-export-show-temporary-export-buffer'
 is non-nil.
 
 Sourced from ox-beamer."
   (interactive)
-  (org-export-to-buffer 'beamer "*Org D&D Export*"
+  (org-export-to-buffer 'dnd "*Org D&D Export*"
     async subtreep visible-only body-only ext-plist (lambda () (LaTeX-mode))))
 
 ;;;###autoload
-(defun org-beamer-export-to-latex
+(defun org-dnd-export-to-latex
     (&optional async subtreep visible-only body-only ext-plist)
-  "Export current buffer as a Beamer presentation (tex).
+  "Export current buffer as a D&D LaTeX file.
 
 If narrowing is active in the current buffer, only export its
 narrowed part.
