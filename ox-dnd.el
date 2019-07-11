@@ -1,8 +1,8 @@
 ;;; ox-dnd.el --- Write D&D homebrew sheets using org-mode
 
-;; Copyright (C) 2018 Alex Smith <alex.smith@owari.cc>
+;; Copyright (C) 2019 Alex Smith <xeals@pm.me>
 
-;; Author: Alex Smith <alex.smith@owari.cc>
+;; Author: Alex Smith <xeals@pm.me>
 ;; URL: https://github.com/xeals/emacs-org-dnd
 
 (require 'ox-latex)
