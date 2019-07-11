@@ -29,7 +29,7 @@
               ("1" "st")
               ("2" "nd")
               ("3" "rd")
-              (t "th")))))
+              (_ "th")))))
 
 (defun org-dnd--spell-level (level school)
   (org-trim
