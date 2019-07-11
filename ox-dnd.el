@@ -96,8 +96,7 @@ contextual information."
     (replace-regexp-in-string
      "{Legendary Actions}"
      (format "{Legendary Actions}\nThe %s can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The %s regains spent legendary actions at the start of its turn.\n" nm nm)
-     content))
-  )
+     content)))
 
 (defun org-dnd-monsterbox (monster contents info)
   "Transcode a monster box from Org to a D&D LaTeX monsterbox.
@@ -172,8 +171,7 @@ contextual information."
      (org-dnd--add-legendary-action-text
       name
       (org-dnd--extract-actions contents))
-     "\n\\end{monsterbox}"
-     )))
+     "\n\\end{monsterbox}")))
 
 (defun org-dnd-special-block (special-block contents info)
   "Transcode a SPECIAL-BLOCK element from Org to D&D LaTeX.
