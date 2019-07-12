@@ -112,7 +112,6 @@ contextual information."
            (race (org-export-read-attribute :attr_monster_info monster :race))
            (subrace (org-export-read-attribute :attr_monster_info monster :subrace))
            (alignment (org-export-read-attribute :attr_monster_info monster :alignment)))
-       (message "info: %s, %s, %s, %s" size race subrace alignment)
        (when (and size race alignment)
          (concat
           "\\begin{hangingpar}\n\\textit{"
