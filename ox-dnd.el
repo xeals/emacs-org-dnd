@@ -172,6 +172,32 @@ contextual information."
       (org-dnd--extract-actions contents))
      "\n\\end{monsterbox}")))
 
+;; HACK There has to be an easier way to add the package options as a derived
+;; LaTeX backend.
+(defun org-dnd-template (contents info)
+  "Return complete document string after LaTeX conversion.
+CONTENTS is the transcoded contents string.  INFO is a plist
+holding export options."
+  (defun bool (b) (if b "true" "false"))
+  (let* ((just (plist-get info :justified))
+         (layout (plist-get info :layout))
+         (bg (plist-get info :with-bg))
+         (multitoc (plist-get info :with-multitoc))
+         (class-options
+          (concat
+           (when just "justified,")
+           (when bg (format "bg=%s," bg))
+           (when (and org-dnd-use-package layout)
+             (format "layout=%s," (bool org-dnd-use-package)))
+           (unless multitoc "nomultitoc"))))
+    (let ((body (org-latex-template contents info)))
+      (replace-regexp-in-string
+       "\\[CO\\]"
+       (concat "," (replace-regexp-in-string
+                    ",$" ""
+                    class-options))
+       body t))))
+
 (defun org-dnd-special-block (special-block contents info)
   "Transcode a SPECIAL-BLOCK element from Org to D&D LaTeX.
 CONTENTS holds the contents of the block.  INFO is a plist holding
@@ -243,9 +269,15 @@ contextual information."
               (if a (org-dnd-export-to-pdf t s v b)
                 (org-open-file (org-dnd-export-to-pdf nil s v b)))))))
   :options-alist
-  '((:bg nil "bg" "full" t)
-    (:justified nil "justified" nil t))
-  :translate-alist '((table . org-dnd-table)
+  '((:justified nil "justified" t t)
+    (:layout nil "layout" t nil)
+    (:with-bg nil "bg" "full" t)
+    (:with-multitoc nil "mtoc" nil t)
+    (:with-package "DND_USE_PACKAGE" nil nil t)
+    (:with-title nil "title" nil t)
+    (:headline-levels nil "H" 5 t))
+  :translate-alist '((template . org-dnd-template)
+                     (table . org-dnd-table)
                      (special-block . org-dnd-special-block)))
 
 ;;;###autoload
