@@ -18,7 +18,7 @@ Clone this repo somewhere and add it to your emacs load path.
 Add the following to your =.emacs=:
 
 #+BEGIN_SRC emacs-lisp
-    (require 'ox-dnd)
+  (require 'ox-dnd)
 #+END_SRC
 
 * Usage
@@ -27,7 +27,6 @@ Simply add the following to your =.org= file:
 
 #+BEGIN_SRC org
     ,#+LATEX_CLASS: dnd
-    ,#+OPTIONS: toc:nil title:nil H:5
 #+END_SRC
 
 Each environment in the LaTeX package corresponds to an org-mode block. Each
@@ -40,6 +39,28 @@ the org-mode export dispatcher, then =l d=).
 Options are included here. For full usage examples, see
 [[file:example/example.org][the example document]]. A sample PDF and tex
 output is included in the [[./example][example]] folder.
+
+** Additional options
+
+Package options can be specified in the standard =#+OPTIONS= header. The following options are added or changed from their default LaTeX export values:
+
+- =:title= :: Disabled, as there is currently (as of v0.7) no official styled title.
+- =:justified= :: Boolean. Justify column copy (default =t=).
+- =:layout= :: Boolean. Controls whether loading the =dnd= LaTeX package also modifies the document layout (default =t=). Has no effect if =org-dnd-use-package= is =nil=.
+- =:bg= :: String value. Declare how to load background and footer images:
+  - =full= :: Load both the background and footer images (default).
+  - =none= :: Remove both the background and footer images.
+  - =print= :: Load only the footer images.
+- =:mtoc= :: Boolean. Use the multi-column table of contents (default =t=).
+
+** Customisation
+
+If you prefer to use the package in your exported file rather than the class (the recommended option), you can set =org-dnd-use-package= in your =.emacs= before loading this package:
+
+#+begin_src emacs-lisp
+  (setq org-dnd-use-package t)
+  (require 'ox-dnd)
+#+end_src
 
 ** Comment/paper/quote box
 
