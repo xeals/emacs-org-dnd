@@ -273,7 +273,6 @@ contextual information."
     (:layout nil "layout" t nil)
     (:with-bg nil "bg" "full" t)
     (:with-multitoc nil "mtoc" nil t)
-    (:with-package "DND_USE_PACKAGE" nil nil t)
     (:with-title nil "title" nil t)
     (:headline-levels nil "H" 5 t))
   :translate-alist '((template . org-dnd-template)
