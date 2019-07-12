@@ -119,7 +119,7 @@ contextual information."
           (when subrace (format " (%s)" subrace))
           (format ", %s" alignment)
           "}\n\\end{hangingpar}\n")))
-     "\\hline%\n"
+     "\\dndline%\n"
      ;; Basics
      (let ((ac (org-export-read-attribute :attr_monster_basics monster :ac))
            (hp (org-export-read-attribute :attr_monster_basics monster :hp))
@@ -129,7 +129,7 @@ contextual information."
                (format "hitpoints = \\dice{%s},\n" (or hp 0))
                (format "speed = {%s ft.},\n" (or speed 0))
                "]\n"))
-     "\\hline%\n"
+     "\\dndline%\n"
      ;; Stats
      (let ((con (org-export-read-attribute :attr_monster_stats monster :con))
            (str (org-export-read-attribute :attr_monster_stats monster :str))
@@ -145,7 +145,7 @@ contextual information."
                (format "WIS = \\stat{%s},\n" (or wis 10))
                (format "CHA = \\stat{%s},\n" (or cha 10))
                "]\n"))
-     "\\hline%\n"
+     "\\dndline%\n"
      ;; Details
      (let ((skills (org-export-read-attribute :attr_monster_details monster :skills))
            (saves (org-export-read-attribute :attr_monster_details monster :saves))
@@ -165,7 +165,7 @@ contextual information."
                (when langs (format "languages = {%s},\n" langs))
                (format "challenge = %s,\n" (or cr 0))
                "]\n"))
-     "\\hline [1mm]\n"
+     "\\dndline\n"
      ;; Abilities and actions
      (org-dnd--add-legendary-action-text
       name
