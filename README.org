@@ -1,147 +1,147 @@
 * =emacs-org-dnd=
 
-  Provides an org-mode compatability layer to the
-  [[https://github.com/evanbergeron/DND-5e-LaTeX-Template][D&D 5e LaTeX
-  Template]].
+Provides an org-mode compatability layer to the
+[[https://github.com/evanbergeron/DND-5e-LaTeX-Template][D&D 5e LaTeX
+Template]].
 
 * Installation
 
-  As much effort as possible has been taken to make creation feel like natural
-  org-mode markup.
+As much effort as possible has been taken to make creation feel like natural
+org-mode markup.
 
-  Follow the instructions to set up the package at the
-  [[https://github.com/evanbergeron/DND-5e-LaTeX-Template][LaTeX template
-  repo]].
+Follow the instructions to set up the package at the
+[[https://github.com/evanbergeron/DND-5e-LaTeX-Template][LaTeX template
+repo]].
 
-  Clone this repo somewhere and add it to your emacs load path.
+Clone this repo somewhere and add it to your emacs load path.
 
-  Add the following to your =.emacs=:
+Add the following to your =.emacs=:
 
-  #+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp
     (require 'ox-dnd)
-  #+END_SRC
+#+END_SRC
 
 * Usage
 
-  Add the following to your =.org= file:
+Simply add the following to your =.org= file:
 
-  #+BEGIN_SRC org
+#+BEGIN_SRC org
     ,#+LATEX_CLASS: dnd
     ,#+OPTIONS: toc:nil title:nil H:5
-  #+END_SRC
+#+END_SRC
 
-  Each environment in the LaTeX package corresponds to an org-mode block. Each
-  block is customised using (several) attributes.
+Each environment in the LaTeX package corresponds to an org-mode block. Each
+block is customised using (several) attributes.
 
-  =ox-dnd= provides an org-mode export backend. You can export the buffer as
-  a PDF file with @@html:<kbd>@@ <C-c> <C-e> l d @@html:</kbd>@@ (invoking
-  the org-mode export dispatcher, then =l d=).
+=ox-dnd= provides an org-mode export backend. You can export the buffer as
+a PDF file with @@html:<kbd>@@ <C-c> <C-e> l d @@html:</kbd>@@ (invoking
+the org-mode export dispatcher, then =l d=).
 
-  Options are included here. For full usage examples, see
-  [[file:example/example.org][the example document]]. A sample PDF and tex
-  output is included in the [[./example][example]] folder.
+Options are included here. For full usage examples, see
+[[file:example/example.org][the example document]]. A sample PDF and tex
+output is included in the [[./example][example]] folder.
 
 ** Comment/paper/quote box
 
-   - =NAME= :: Title of box
+- =NAME= :: Title of box
 
 ** Subtitle
 
-   No attributes.
+No attributes.
 
-   Heading on first line of block, subtitle on second line of block.
+Heading on first line of block, subtitle on second line of block.
 
 ** Spell
 
-   - =NAME= :: Name of spell
-   - =ATTR_SPELL= :: Spell information:
-                     - =:level= :: Spell level
-                     - =:school= :: Spell school (illusion, abjuration, etc.)
-                     - =:range= :: Spell range (include unit; e.g., =5 feet=)
-                     - =:cast= :: Cast time (include unit; e.g., =1 action=)
-                     - =:duration= :: Spell duration (include unit; e.g., =Until dispelled=,
-                                      =1 round/level=)
-                     - =:comp= :: Spell components (in full, including information for
-                                  material components)
+- =NAME= :: Name of spell
+- =ATTR_SPELL= :: Spell information:
+  - =:level= :: Spell level
+  - =:school= :: Spell school (illusion, abjuration, etc.)
+  - =:range= :: Spell range (include unit; e.g., =5 feet=)
+  - =:cast= :: Cast time (include unit; e.g., =1 action=)
+  - =:duration= :: Spell duration (include unit; e.g., =Until dispelled=,
+    =1 round/level=)
+  - =:comp= :: Spell components (in full, including information for
+    material components)
 
-   Block contents are the spell description.
+    Block contents are the spell description.
 
 ** Monster
 
-   - =NAME= :: Name of monster
-   - =ATTR_MONSTER_INFO= :: Content in the subheader of a monster:
-        - =:size=
-        - =:race=
-        - =:subrace=; optional
-        - =:alignment=
-   - =ATTR_MONSTER_BASICS= :: Basic stat block; all optional:
-        - =:ac= (armor class)
-        - =:hp= (hit dice; given as dice notation, e.g., 3d8+3)
-        - =:speed=
-   - =ATTR_MONSTER_STATS= :: Monster stats; modifiers are calculated
-        automatically; all optional:
-        - =:con=
-        - =:str=
-        - =:dex=
-        - =:int=
-        - =:wis=
-        - =:cha=
-   - =ATTR_MONSTER_DETAILS= :: Detailed information; all optional:
-        - =:skills=
-        - =:saves=
-        - =:imm= (damage immunities)
-        - =:res= (damage resistances)
-        - =:vul= (damage vulnerabilities)
-        - =:senses= (e.g., darkvision, tremorsense)
-        - =:langs= (languages)
-        - =:cr= (challenge rating; experience value calculated automatically)
+- =NAME= :: Name of monster
+- =ATTR_MONSTER_INFO= :: Content in the subheader of a monster:
+  - =:size=
+  - =:race=
+  - =:subrace=; optional
+  - =:alignment=
+- =ATTR_MONSTER_BASICS= :: Basic stat block; all optional:
+  - =:ac= (armor class)
+  - =:hp= (hit dice; given as dice notation, e.g., 3d8+3)
+  - =:speed=
+- =ATTR_MONSTER_STATS= :: Monster stats; modifiers are calculated
+  automatically; all optional:
+  - =:con=
+  - =:str=
+  - =:dex=
+  - =:int=
+  - =:wis=
+  - =:cha=
+- =ATTR_MONSTER_DETAILS= :: Detailed information; all optional:
+  - =:skills=
+  - =:saves=
+  - =:imm= (damage immunities)
+  - =:res= (damage resistances)
+  - =:vul= (damage vulnerabilities)
+  - =:senses= (e.g., darkvision, tremorsense)
+  - =:langs= (languages)
+  - =:cr= (challenge rating; experience value calculated automatically)
 
 
-   Block contents are the monster skills in the following format:
+Block contents are the monster skills in the following format:
 
-   #+BEGIN_SRC org
+#+BEGIN_SRC org
      - Skill name :: Effect
      - Actions
        - Action name :: Effect
      - Legendary Actions
        - Legendary action name :: Effect
-   #+END_SRC
+#+END_SRC
 
-   Any entry that appears before the actions header is a passive skill. The blurb
-   for legendary actions is added automatically. Any number of entries in each
-   category (skill, action, legendary action) can be added.
+Any entry that appears before the actions header is a passive skill. The blurb
+for legendary actions is added automatically. Any number of entries in each
+category (skill, action, legendary action) can be added.
 
 ** Tables
 
-   Tables are formatted the same as regular org-mode tables.
+Tables are formatted the same as regular org-mode tables.
 
-   =NAME= is used only internally (i.e., for referencing). To set a visible
-   title for a table, use =HEADER=.
+=NAME= is used only internally (i.e., for referencing). To set a visible
+title for a table, use =HEADER=.
 
-   Tables with no =CAPTION= are formatted inline with text and allow wrapping.
-   Texts with a caption span both columns.
+Tables with no =CAPTION= are formatted inline with text and allow wrapping.
+Texts with a caption span both columns.
 
-   Tables accept the following attributes through =ATTR_DND=:
+Tables accept the following attributes through =ATTR_DND=:
 
-   - =:align= :: As with the standard org-mode align attribute, accepts a LaTeX
-                 alignment string. Common are =lX= or =cX= to left- or centre-align the left
-                 column and expand the right column to fill the page column.
-   - =:color= :: Accepts a color as defined by the LaTeX package. See the
-                 example document for a list of valid colors.
+- =:align= :: As with the standard org-mode align attribute, accepts a LaTeX
+  alignment string. Common are =lX= or =cX= to left- or centre-align the left
+  column and expand the right column to fill the page column.
+- =:color= :: Accepts a color as defined by the LaTeX package. See the
+  example document for a list of valid colors.
 
 * TODO
 
-  - Support package options
-  - Move table caption below table
-  - Don't require the options blurb?
+- Support package options
+- Move table caption below table
+- Don't require the options blurb?
 
 * License
 
-  Licensed under Apache License, Version 2.0
-  ([[file:LICENSE][LICENSE]] or http://www.apache.org/licenses/LICENSE-2.0).
+Licensed under Apache License, Version 2.0
+([[file:LICENSE][LICENSE]] or http://www.apache.org/licenses/LICENSE-2.0).
 
 ** Contribution
 
-   Unless you explicitly state otherwise, any contribution intentionally
-   submitted for inclusion in the work by you, as defined in the Apache-2.0
-   license, shall be licensed as above, without any additional terms or conditions.
+Unless you explicitly state otherwise, any contribution intentionally
+submitted for inclusion in the work by you, as defined in the Apache-2.0
+license, shall be licensed as above, without any additional terms or conditions.
