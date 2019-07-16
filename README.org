@@ -4,6 +4,10 @@ Provides an org-mode compatability layer to the
 [[https://github.com/evanbergeron/DND-5e-LaTeX-Template][D&D 5e LaTeX
 Template]].
 
+* News
+
+See [[file:CHANGELOG.org]].
+
 * Installation
 
 As much effort as possible has been taken to make creation feel like natural
@@ -155,12 +159,6 @@ Tables accept the following attributes through =ATTR_DND=:
 Map sections are automatically from any heading with the =:map:= tag. The =:map:= tag will not be rendered as tags normally are. Area sections have two levels (=area= and =subarea=), so any deeper than two nested levels is not supported.
 
 NOTE: Things may break in the section if a top-level heading (rather than a level 2 heading as in the example) is tagged as a map. There should probably be a fix eventually for this.
-
-* TODO
-
-- Support package options
-- Move table caption below table
-- Don't require the options blurb?
 
 * License
 

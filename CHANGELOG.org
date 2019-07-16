@@ -1,0 +1,28 @@
+** 2019-07-20
+
+This update brings the package (mostly) in line with version [[https://github.com/rpgtex/DND-5e-LaTeX-Template/releases/tag/v0.7.0][0.7.0]] of upstream.
+
+*** Known Issues
+
+- No interface provided for the new attack or spell commands
+- Map section formatting will probably break when not used as 3rd and 4th level headings. See [[Map sections][Map sections]]
+- =org-dnd-use-package= must be set before =ox-dnd= is loaded
+
+*** Deprecated
+
+- The =:speed= key in a monster attribute is intended for only ground speed. Use one of the specialised keys =:fly=, =:burrow=, =:climb=, =:swim=, or =:hover= for other movement speeds
+- Setting the heading level, title, etc. options manually is no longer required (i.e., can remove =#+OPTIONS: H:5 title:nil toc:nil= unless desired)
+
+*** Bug Fixes
+
+- generate captions below objects ([4184b145](4184b145))
+- remove emphasis from =quotebox= ([d0d43022](d0d43022))
+- remove =DND_USE_PACKAGE= from header options ([c195b13c](c195b13c))
+- remove message in monster block ([3f449152](3f449152))
+- rename buffers and documentation to remove mentions of Beamer ([cf28b189](cf28b189))
+
+*** Features
+
+- support map sections ([0dd4d75c](0dd4d75c))
+- support special movement types with different keywords ([31a7e0e3](31a7e0e3))
+- add class/package options ([90df1ffb](90df1ffb))
