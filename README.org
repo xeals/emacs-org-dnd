@@ -150,6 +150,12 @@ Tables accept the following attributes through =ATTR_DND=:
 - =:color= :: Accepts a color as defined by the LaTeX package. See the
   example document for a list of valid colors.
 
+** Map sections
+
+Map sections are automatically from any heading with the =:map:= tag. The =:map:= tag will not be rendered as tags normally are. Area sections have two levels (=area= and =subarea=), so any deeper than two nested levels is not supported.
+
+NOTE: Things may break in the section if a top-level heading (rather than a level 2 heading as in the example) is tagged as a map. There should probably be a fix eventually for this.
+
 * TODO
 
 - Support package options

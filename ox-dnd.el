@@ -183,6 +183,21 @@ contextual information."
       (org-dnd--extract-actions contents))
      "\n\\end{monsterbox}")))
 
+(defun org-dnd-headline (headline contents info)
+  "Transcode a HEADLINE element from Org to LaTeX.
+CONTENTS holds the contents of the headline.  INFO is a plist
+holding contextual information."
+  (let ((text (org-latex-headline headline contents info))
+        (tags (org-element-property :tags headline)))
+    (if (member "map" tags)
+        (progn
+          (org-element-put-property headline :tags (remove "map" tags))
+          (replace-regexp-in-string
+           "subsection{"
+           "area{"
+           (org-latex-headline headline contents info)))
+      (org-latex-headline headline contents info))))
+
 ;; HACK There has to be an easier way to add the package options as a derived
 ;; LaTeX backend.
 (defun org-dnd-template (contents info)
@@ -287,7 +302,8 @@ contextual information."
     (:with-title nil "title" nil t)
     (:headline-levels nil "H" 5 t)
     (:latex-caption-above nil nil nil))
-  :translate-alist '((template . org-dnd-template)
+  :translate-alist '((headline . org-dnd-headline)
+                     (template . org-dnd-template)
                      (table . org-dnd-table)
                      (special-block . org-dnd-special-block)))
 
