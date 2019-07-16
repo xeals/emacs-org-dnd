@@ -98,7 +98,7 @@ Heading on first line of block, subtitle on second line of block.
 - =ATTR_MONSTER_BASICS= :: Basic stat block; all optional:
   - =:ac= (armor class)
   - =:hp= (hit dice; given as dice notation, e.g., 3d8+3)
-  - =:speed=
+  - =:speed=; for ground speed. For other types of speed, additionally use =:fly=, =:burrow=, =:climb=, =:swim=, or =:hover=
 - =ATTR_MONSTER_STATS= :: Monster stats; modifiers are calculated
   automatically; all optional:
   - =:con=

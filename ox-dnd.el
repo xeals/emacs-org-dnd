@@ -123,12 +123,23 @@ contextual information."
      ;; Basics
      (let ((ac (org-export-read-attribute :attr_monster_basics monster :ac))
            (hp (org-export-read-attribute :attr_monster_basics monster :hp))
-           (speed (org-export-read-attribute :attr_monster_basics monster :speed)))
+           (speed (org-export-read-attribute :attr_monster_basics monster :speed))
+           ;; Special speed attributes
+           (burrow (org-export-read-attribute :attr_monster_basics monster :burrow))
+           (climb (org-export-read-attribute :attr_monster_basics monster :climb))
+           (fly (org-export-read-attribute :attr_monster_basics monster :fly))
+           (hover (org-export-read-attribute :attr_monster_basics monster :hover))
+           (swim (org-export-read-attribute :attr_monster_basics monster :swim)))
        (concat "\\basics[%\n"
                (format "armorclass = %s,\n" (or ac 0))
                (format "hitpoints = \\dice{%s},\n" (or hp 0))
-               (format "speed = {%s ft.},\n" (or speed 0))
-               "]\n"))
+               (format "speed = {%s ft." (or speed 0))
+               (when burrow (format ", burrow %s ft." burrow))
+               (when climb (format ", climb %s ft." climb))
+               (when fly (format ", fly %s ft." fly))
+               (when hover (format ", fly %s ft. (hover)" hover))
+               (when swim (format ", swim %s ft." swim))
+               "},\n]\n"))
      "\\dndline%\n"
      ;; Stats
      (let ((con (org-export-read-attribute :attr_monster_stats monster :con))
