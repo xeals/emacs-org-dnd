@@ -163,7 +163,7 @@ contextual information."
                (when vul (format "damagevulnerabilities = {%s},\n" vul))
                (when senses (format "senses = {%s},\n" senses))
                (when langs (format "languages = {%s},\n" langs))
-               (format "challenge = %s,\n" (or cr 0))
+               (format "challenge = {%s},\n" (or cr 0))
                "]\n"))
      "\\dndline\n"
      ;; Abilities and actions
