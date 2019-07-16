@@ -217,7 +217,7 @@ contextual information."
                (format "\\end{%s}\n" type)))
       ("quotebox"
        (concat (format "\\begin{%s}\n" type)
-               (concat "\\emph{" contents "}")
+               contents
                (format "\\end{%s}" type)))
       ("spell" (org-dnd-spell special-block contents info))
       ("subtitle" (org-dnd--subtitle-block special-block contents info))
