@@ -103,7 +103,7 @@ See Table [[tab:colors]] for a list of accent colors that match the core books.
 
 **** Using =themecolor=
 
-#+BEGIN_SRC org
+#+BEGIN_SRC org :exports none
   \setthemecolor[PhbMauve]
 
   ,#+NAME: Example
@@ -147,7 +147,7 @@ See Table [[tab:colors]] for a list of accent colors that match the core books.
 
 **** Using element color arguments
 
-#+BEGIN_SRC org
+#+BEGIN_SRC org :exports none
   ,#+ATTR_DND: :align cX :color DmgCoral
   | *d8* | *Item*                  |
   |  1   | Small wooden button     |
