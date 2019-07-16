@@ -211,10 +211,10 @@ contextual information."
                contents
                (format "\\end{%s}" type)))
       ("paperbox"
-       (concat (format "\\begin{figure}[!t]\n\\begin{%s}{%s}" type title)
+       (concat (format "\\begin{%s}[float=!t]{%s}" type title)
                (org-latex--caption/label-string special-block info)
                contents
-               (format "\\end{%s}\n\\end{figure}" type)))
+               (format "\\end{%s}\n" type)))
       ("quotebox"
        (concat (format "\\begin{%s}\n" type)
                (concat "\\emph{" contents "}")
