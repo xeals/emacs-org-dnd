@@ -1,44 +1,31 @@
-% Created 2018-02-19 Mon 22:29
+% Created 2019-07-16 Tue 22:35
 % Intended LaTeX compiler: pdflatex
-\documentclass[letterpaper,10pt,twoside,twocolumn,openany]{book}
+\documentclass[10pt,twoside,twocolumn,openany,bg=full,nomultitoc]{dndbook}
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
 \usepackage{hyperref}
-\usepackage{dnd}
-\hypersetup{pdfborder=0 0 0}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{graphicx}
-\usepackage{grffile}
-\usepackage{longtable}
-\usepackage{wrapfig}
-\usepackage{rotating}
-\usepackage[normalem]{ulem}
-\usepackage{amsmath}
-\usepackage{textcomp}
-\usepackage{amssymb}
-\usepackage{capt-of}
-\usepackage{hyperref}
+\usepackage{listings}
+
+\usepackage{color}
+\usepackage{listings}
 \usepackage{lipsum}
-\author{Alex}
 \date{\today}
 \title{Example}
 \hypersetup{
- pdfauthor={Alex},
+ pdfauthor={},
  pdftitle={Example},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 25.3.1 (Org mode 9.1.6)}, 
+ pdfcreator={Emacs 26.2 (Org mode 9.2.3)},
  pdflang={English}}
 \begin{document}
 
 
 \chapter{Chapter 1: The Dark \LaTeX}
-\label{sec:org3ea15eb}
+\label{sec:org70b5135}
 
 \section{Main Section}
-\label{sec:org26086a0}
+\label{sec:org8815c0e}
 \lipsum[2]
 
 \begin{quotebox}
@@ -46,11 +33,11 @@ As you approach this template you get a sense that the blood and tears of many g
 \end{quotebox}
 
 \subsection{Fun with boxes}
-\label{sec:org061907b}
+\label{sec:org3732cc1}
 \subsubsection{Even more fun!}
-\label{sec:orgef44c3c}
+\label{sec:org2b4450d}
 
-\begin{commentbox}{This Is a Comment Box!}\label{org9f12bde}
+\begin{commentbox}{This Is a Comment Box!}\label{org943e959}
 A \texttt{commentbox} is a box for minimal highlighting of text. It lacks the ornamentation of \texttt{paperbox}, but it can handle being broken over a column.
 \end{commentbox}
 
@@ -58,11 +45,9 @@ A \texttt{commentbox} is a box for minimal highlighting of text. It lacks the or
 
 \lipsum[3]
 
-\begin{figure}[!t]
-\begin{paperbox}{Behold, the Paperbox!}\label{org3e01e79}
+\begin{paperbox}[float=!t]{Behold, the Paperbox!}\label{org0a1e264}
 The \texttt{paperbox} is used as a sidebar. It does not break over columns and is best used with a figure environment to float it to one corner of the page where the surrounding text can then flow around it.
 \end{paperbox}
-\end{figure}
 
 \header{Nice Table}
 \begin{dndtable}
@@ -72,46 +57,8 @@ Some value & Some value\\
 Some value & Some value\\
 \end{dndtable}
 
-\begin{monsterbox}{Monster Foo}
-\begin{hangingpar}
-\textit{Small metasyntactic variable (goblinoid), neutral evil}
-\end{hangingpar}
-\hline%
-\basics[%
-armorclass = 12,
-hitpoints = \dice{3d8+3},
-speed = 50 ft,
-]
-\hline%
-\stats[%
-CON = \stat{10},
-STR = \stat{12},
-DEX = \stat{7},
-INT = \stat{10},
-WIS = \stat{10},
-CHA = \stat{10},
-]
-\hline%
-\details[%
-languages = {Common Lisp, Erlang},
-challenge = 0,
-]
-\hline [1mm]
-\begin{monsteraction}[Monster-super-powers]
-This Monster has some serious superpowers!
-\end{monsteraction}
-\monstersection{Actions}
-\begin{monsteraction}[Generate text]
-This one can generate tremendous amounts of text!
-Though only when it wants to.
-\end{monsteraction}
-\begin{monsteraction}[More actions]
-See, here he goes again! Yet more text.
-\end{monsteraction}
-\end{monsterbox}
-
 \section{Spells}
-\label{sec:org7f5158a}
+\label{sec:orgdc9aff0}
 
 \begin{spell}{Beautiful Typesetting}{4th-level illusion}{1 action}{5 feet}{S, M (ink and parchment, which the spell consumes)}{Until dispelled}
 You are able to transform a written message of any length into a beautiful
@@ -126,8 +73,73 @@ they are no longer charmed.
 
 \lipsum[2]
 
+\begin{monsterbox}{Monster Foo}
+\begin{hangingpar}
+\textit{Medium metasyntactic variable (goblinoid), neutral evil}
+\end{hangingpar}
+\dndline%
+\basics[%
+armorclass = 9 (12 with \emph{mage armor}),
+hitpoints = \dice{3d8+3},
+speed = {30 ft., fly 30 ft.},
+]
+\dndline%
+\stats[%
+CON = \stat{13},
+STR = \stat{12},
+DEX = \stat{8},
+INT = \stat{10},
+WIS = \stat{14},
+CHA = \stat{15},
+]
+\dndline%
+\details[%
+senses = {darkvision 60ft., passive Perception 10},
+languages = {Common, Goblin},
+challenge = {1},
+]
+\dndline
+\begin{monsteraction}[Innate Spellcasting]
+Foo's spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). It can innately cast the following spells, requiring no material components:
+\end{monsteraction}
+\begin{monsteraction}[At will]
+\emph{misty step}
+\end{monsteraction}
+\begin{monsteraction}[3/day]
+\emph{fog cloud}, \emph{rope trick}
+\end{monsteraction}
+\begin{monsteraction}[1/day]
+\emph{identify}
+\end{monsteraction}
+\begin{monsteraction}[Spellcasting]
+Foo is a 3rd-level spellcaster. Its spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). It has the following sorcerer spells prepared:
+\end{monsteraction}
+\begin{monsteraction}[At will]
+\emph{blade ward}, \emph{fire bolt}, \emph{light}, \emph{shocking grasp}
+\end{monsteraction}
+\begin{monsteraction}[1st level (4 slots)]
+\emph{burning hands}, \emph{mage armor}
+\end{monsteraction}
+\begin{monsteraction}[2nd level (2 slots)]
+\emph{scorching ray}
+\end{monsteraction}
+\monstersection{Actions}
+\begin{monsteraction}[Multiattack]
+The foo makes two melee attacks.
+\end{monsteraction}
+\begin{monsteraction}[Dagger]
+\emph{Melee or Ranged Weapon Attack:} +3 to hit, reach 5 ft. or range 20/60ft., one target. \emph{Hit:} \dice{1d4 + 1} piercing damage.
+\end{monsteraction}
+\begin{monsteraction}[Flame Tongue Longsword]
+\emph{Melee Weapon Attack:} +3 to hit, reach 5 ft., one target. \emph{Hit:} \dice{1d4 + 1} slashing damage plus \dice{2d6} fire damage, or \dice{1d10 + 1} slashing damage plus \dice{2d6} fire damage if used with two hands.
+\end{monsteraction}
+\begin{monsteraction}[Assassin's Light Crossbow]
+\emph{Ranged Weapon Attack:} +0 to hit, range 80/320 ft., one target. \emph{Hit:} \dice{1d8} piercing damage, and the target must make a DC 15 Constitution saving throw, taking \dice{7d6} poison damage on a failed save, or half as much damage on a successful one.
+\end{monsteraction}
+\end{monsterbox}
+
 \section{Colors}
-\label{sec:org436b61c}
+\label{sec:org523ac5a}
 
 This package provides several global color variables to style \texttt{commentbox}, \texttt{quotebox}, \texttt{paperbox}, and \texttt{dndtable} environments.
 
@@ -139,11 +151,9 @@ This package provides several global color variables to style \texttt{commentbox
 \texttt{tablecolor} & Controls background of even \texttt{dndtable} rows.\\
 \end{dndtable}
 
-See Table \ref{tab:org8e0d0a5} for a list of accent colors that match the core books.
+See Table \ref{tab:org93502e7} for a list of accent colors that match the core books.
 
 \begin{table*}[htbp]
-\caption{\label{tab:org8e0d0a5}
-Colors supported by this package}
 
 \begin{dndtable}[XX]
 \textbf{Color} & \textbf{Description}\\
@@ -156,6 +166,9 @@ Colors supported by this package}
 \texttt{DmgSlateGray} (\texttt{DmgSlateGrey}) & Blue-gray used in PHB Part 3\\
 \texttt{DmgLilac} & Purple-gray used in DMG appendix\\
 \end{dndtable}
+\caption{\label{tab:org93502e7}
+Colors supported by this package}
+
 \end{table*}
 
 \begin{itemize}
@@ -165,40 +178,16 @@ Colors supported by this package}
 \end{itemize}
 
 \subsection{Examples}
-\label{sec:org081ff9e}
+\label{sec:orgc47216d}
 
 \subsubsection{Using \texttt{themecolor}}
-\label{sec:orgb9648f0}
-
-\begin{verbatim}
-\setthemecolor[PhbMauve]
-
-#+NAME: Example
-#+BEGIN_PAPERBOX
-\lipsum[2]
-#+END_PAPERBOX
-
-\setthemecolor[PhbLightCyan]
-
-#+HEADER: Example
-#+ATTR_DND: :align cX
-| *d8* | *Item*                  |
-|  1   | Small wooden button     |
-|  2   | Red feather             |
-|  3   | Human tooth             |
-|  4   | Vial of green liquid    |
-|  6   | Tasty biscuit           |
-|  7   | Broken axe handle       |
-|  8   | Tarnished silver locket |
-\end{verbatim}
+\label{sec:org547c3ec}
 
 \setthemecolor[PhbMauve]
 
-\begin{figure}[!t]
-\begin{paperbox}{Example}\label{org8b2b9ab}
+\begin{paperbox}[float=!t]{Example}\label{org72655cf}
 \lipsum[2]
 \end{paperbox}
-\end{figure}
 
 \setthemecolor[PhbLightCyan]
 
@@ -215,19 +204,7 @@ Colors supported by this package}
 \end{dndtable}
 
 \subsubsection{Using element color arguments}
-\label{sec:orgf0399a8}
-
-\begin{verbatim}
-#+ATTR_DND: :align cX :color DmgCoral
-| *d8* | *Item*                  |
-|  1   | Small wooden button     |
-|  2   | Red feather             |
-|  3   | Human tooth             |
-|  4   | Vial of green liquid    |
-|  6   | Tasty biscuit           |
-|  7   | Broken axe handle       |
-|  8   | Tarnished silver locket |
-\end{verbatim}
+\label{sec:orgfdc6e2c}
 
 \begin{dndtable}[cX][DmgCoral]
 \textbf{d8} & \textbf{Item}\\
@@ -239,4 +216,70 @@ Colors supported by this package}
 7 & Broken axe handle\\
 8 & Tarnished silver locket\\
 \end{dndtable}
+
+\section{Map Regions}
+\label{sec:orgaf7e525}
+
+The map region commands provides automatic numbering of areas.
+
+\begin{verbatim}
+** Map Regions :map:
+
+*** Village of Hommlet
+
+This is the village of hommlet.
+
+**** Inn of the Welcome Wench
+
+Inside the village is the inn of the
+Welcome Wench.
+
+**** Blacksmith's Forge
+
+There's a blacksmith in town, too.
+
+*** Foo's Castle
+
+This is foo's home, a hovel of mud and
+sticks.
+
+**** Moat
+
+This ditch has a board spanning it.
+
+**** Entrance
+
+A five-foot hole reveals the dirt floor
+illuminated by a hole in the roof.
+\end{verbatim}
+
+\area{Village of Hommlet}
+\label{sec:org5ba5a97}
+
+This is the village of hommlet.
+
+\subarea{Inn of the Welcome Wench}
+\label{sec:org93b54e4}
+
+Inside the village is the inn of the Welcome Wench.
+
+\subarea{Blacksmith's Forge}
+\label{sec:org8f38325}
+
+There's a blacksmith in town, too.
+
+\area{Foo's Castle}
+\label{sec:orgad26bbf}
+
+This is foo's home, a hovel of mud and sticks.
+
+\subarea{Moat}
+\label{sec:org77e64f2}
+
+This ditch has a board spanning it.
+
+\subarea{Entrance}
+\label{sec:org99a7b06}
+
+A five-foot hole reveals the dirt floor illuminated by a hole in the roof.
 \end{document}
