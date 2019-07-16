@@ -7,20 +7,31 @@
 
 (require 'ox-latex)
 
+(defgroup org-dnd nil
+  "Group for customising the org-mode D&D LaTeX export backend.")
+
+(defcustom org-dnd-use-package nil
+  "Use the `book' LaTeX class when exporting a D&D org-mode file
+  instead of the `dndbook' class."
+  :group 'org-dnd)
+
 (unless (assoc "dnd" org-latex-classes)
-  (add-to-list 'org-latex-classes
-               '("dnd" "\\documentclass[letterpaper,10pt,twoside,twocolumn,openany]{book}
+  (add-to-list
+   'org-latex-classes
+   `("dnd"
+     ,(concat
+       (format
+        "\\documentclass[10pt,twoside,twocolumn,openany[CO]]{%s}
 [NO-DEFAULT-PACKAGES]
 \\usepackage[AUTO]{babel}
 \\usepackage[utf8]{inputenc}
-\\usepackage[T1]{fontenc}
-\\usepackage{hyperref}
-\\usepackage{dnd}"
-                 ("\\chapter{%s}" . "\\chapter*{%s}")
-                 ("\\section{%s}" . "\\section*{%s}")
-                 ("\\subsection{%s}" . "\\subsection*{%s}")
-                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-                 )))
+\\usepackage{hyperref}"
+        (if org-dnd-use-package "book" "dndbook"))
+       (when org-dnd-use-package "\\n\\usepackage{dnd}"))
+     ("\\chapter{%s}" . "\\chapter*{%s}")
+     ("\\section{%s}" . "\\section*{%s}")
+     ("\\subsection{%s}" . "\\subsection*{%s}")
+     ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))))
 
 (defun ordinal (n)
   (let ((str (if (numberp n) (number-to-string n) n)))
