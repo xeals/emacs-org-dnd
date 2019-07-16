@@ -46,11 +46,15 @@ output is included in the [[./example][example]] folder.
 
 ** Additional options
 
-Package options can be specified in the standard =#+OPTIONS= header. The following options are added or changed from their default LaTeX export values:
+Package options can be specified in the standard =#+OPTIONS= header. The
+following options are added or changed from their default LaTeX export values:
 
-- =:title= :: Disabled, as there is currently (as of v0.7) no official styled title.
+- =:title= :: Boolean. Disabled by default, as of upstream version 0.7.0 there
+  is no official styled title.
 - =:justified= :: Boolean. Justify column copy (default =t=).
-- =:layout= :: Boolean. Controls whether loading the =dnd= LaTeX package also modifies the document layout (default =t=). Has no effect if =org-dnd-use-package= is =nil=.
+- =:layout= :: Boolean. Controls whether loading the =dnd= LaTeX package also
+  modifies the document layout (default =t=). Has no effect if
+  =org-dnd-use-package= is =nil=.
 - =:bg= :: String value. Declare how to load background and footer images:
   - =full= :: Load both the background and footer images (default).
   - =none= :: Remove both the background and footer images.
@@ -59,7 +63,9 @@ Package options can be specified in the standard =#+OPTIONS= header. The followi
 
 ** Customisation
 
-If you prefer to use the package in your exported file rather than the class (the recommended option), you can set =org-dnd-use-package= in your =.emacs= before loading this package:
+If you prefer to use the package in your exported file rather than the class
+(the recommended option), you can set =org-dnd-use-package= in your =.emacs=
+before loading this package:
 
 #+begin_src emacs-lisp
   (setq org-dnd-use-package t)
@@ -102,7 +108,8 @@ Heading on first line of block, subtitle on second line of block.
 - =ATTR_MONSTER_BASICS= :: Basic stat block; all optional:
   - =:ac= (armor class)
   - =:hp= (hit dice; given as dice notation, e.g., 3d8+3)
-  - =:speed=; for ground speed. For other types of speed, additionally use =:fly=, =:burrow=, =:climb=, =:swim=, or =:hover=
+  - =:speed=; for ground speed. For other types of speed, additionally use
+    =:fly=, =:burrow=, =:climb=, =:swim=, or =:hover=
 - =ATTR_MONSTER_STATS= :: Monster stats; modifiers are calculated
   automatically; all optional:
   - =:con=
@@ -156,9 +163,14 @@ Tables accept the following attributes through =ATTR_DND=:
 
 ** Map sections
 
-Map sections are automatically from any heading with the =:map:= tag. The =:map:= tag will not be rendered as tags normally are. Area sections have two levels (=area= and =subarea=), so any deeper than two nested levels is not supported.
+Map sections are automatically from any heading with the =:map:= tag. The
+=:map:= tag will not be rendered as tags normally are. Area sections have two
+levels (=area= and =subarea=), so any deeper than two nested levels is not
+supported.
 
-NOTE: Things may break in the section if a top-level heading (rather than a level 2 heading as in the example) is tagged as a map. There should probably be a fix eventually for this.
+NOTE: Things may break in the section if a top-level heading (rather than a
+level 2 heading as in the example) is tagged as a map. There should probably be
+a fix eventually for this.
 
 * License
 
