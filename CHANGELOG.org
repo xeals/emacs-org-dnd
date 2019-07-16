@@ -1,28 +1,40 @@
 ** 2019-07-20
 
-This update brings the package (mostly) in line with version [[https://github.com/rpgtex/DND-5e-LaTeX-Template/releases/tag/v0.7.0][0.7.0]] of upstream.
+This update brings the package (mostly) in line with version
+[[https://github.com/rpgtex/DND-5e-LaTeX-Template/releases/tag/v0.7.0][0.7.0]]
+of upstream.
 
 *** Known Issues
 
 - No interface provided for the new attack or spell commands
-- Map section formatting will probably break when not used as 3rd and 4th level headings. See [[Map sections][Map sections]]
+- Map section formatting will probably break when not used as 3rd and 4th level
+  headings. See [[file:README.org::*Map sections][Map sections]]
 - =org-dnd-use-package= must be set before =ox-dnd= is loaded
+
+*** Breaking Changes
+
+- Italics are no longer added to quoteboxes automatically.
 
 *** Deprecated
 
-- The =:speed= key in a monster attribute is intended for only ground speed. Use one of the specialised keys =:fly=, =:burrow=, =:climb=, =:swim=, or =:hover= for other movement speeds
-- Setting the heading level, title, etc. options manually is no longer required (i.e., can remove =#+OPTIONS: H:5 title:nil toc:nil= unless desired)
+- The =:speed= key in a monster attribute is intended for only ground speed. Use
+  one of the specialised keys =:fly=, =:burrow=, =:climb=, =:swim=, or =:hover=
+  for other movement speeds
+- Setting the heading level, title, etc. options manually is no longer required
+  (i.e., can remove =#+OPTIONS: H:5 title:nil toc:nil= unless desired)
 
 *** Bug Fixes
 
-- generate captions below objects ([4184b145](4184b145))
-- remove emphasis from =quotebox= ([d0d43022](d0d43022))
-- remove =DND_USE_PACKAGE= from header options ([c195b13c](c195b13c))
-- remove message in monster block ([3f449152](3f449152))
-- rename buffers and documentation to remove mentions of Beamer ([cf28b189](cf28b189))
+- generate captions below objects ([[https://github.com/xeals/emacs-org-dnd/commit/4184b14504b1950a1c2cd71d011d772a56fb5c71][4184b145]])
+- remove emphasis from =quotebox= ([[https://github.com/xeals/emacs-org-dnd/commit/d0d430225fda7dce8bc424116273b383284e7c77][d0d43022]])
+- remove =DND_USE_PACKAGE= from header options ([[https://github.com/xeals/emacs-org-dnd/commit/c195b13cbf8e2f4b52a9fb3d135488b2a7eac205][c195b13c]])
+- remove message in monster block ([[https://github.com/xeals/emacs-org-dnd/commit/3f449152249fe3505a74268973310444e1ca3950][3f449152]])
+- rename buffers and documentation to remove mentions of Beamer
+  ([[https://github.com/xeals/emacs-org-dnd/commit/cf28b189b0aad1050acbe036f89ff50b1123113f][cf28b189]])
 
 *** Features
 
-- support map sections ([0dd4d75c](0dd4d75c))
-- support special movement types with different keywords ([31a7e0e3](31a7e0e3))
-- add class/package options ([90df1ffb](90df1ffb))
+- support map sections ([[https://github.com/xeals/emacs-org-dnd/commit/0dd4d75c3593dc9423443cfed870c4f9d8a5bb1a][0dd4d75c]])
+- support special movement types with different keywords
+  ([[https://github.com/xeals/emacs-org-dnd/commit/31a7e0e350d3dcfc59454f501bb1022905a495df][31a7e0e3]])
+- add class/package options ([[https://github.com/xeals/emacs-org-dnd/commit/90df1ffbb56e311e85f1118e0652df4088df67c6][90df1ffb]])
